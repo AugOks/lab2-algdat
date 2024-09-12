@@ -8,6 +8,8 @@
 
 package no.ntnu.idata2302.lab02;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
 public class CounterTest {
