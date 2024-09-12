@@ -7,3 +7,6 @@ g
 7src/test/java/no/ntnu/idata2302/lab02/SequenceTest.java,9\b\9bfcade5d1df00c2286e38addffc48cdb9f49252
 b
 2src/main/java/no/ntnu/idata2302/lab02/Counter.java,d\f\df1aadb18c67ab46bdbdc53bfcfba29fe7accaca
+:
+
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
