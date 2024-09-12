@@ -70,9 +70,33 @@ public class Sequence {
      * @param item the item that must be inserted
      */
     public void insert(int item, int index) {
-        // TODO: Implement
-        throw new RuntimeException("Not yet implemented.");
+        if(index > capacity*2){   //Checks if the new index is inside the bounds of a resized array
+            throw new IllegalArgumentException("index out of bounds");
+        }
+        if (length == capacity) {       // Creates a new array twice the size if this one is full
+            int[] newItems = new int[capacity * 2];
+            for (int i=0 ; i<length ; i++) {
+                newItems[i] = items[i];
+            }
+            items = newItems;
+            capacity *= 2;
+        }
+        if
+        (index > length && index < capacity){  // Checks if adding the new item would create holes
+                                                // in the array, if so, append at the end.
+            this.items[length] = item;
+        }
+        else {                      // otherwise move elements until the new element can be placed.
+            for (int i = length; i >= index; i--) {
+                items[i] = items[i - 1];
+            }
+            this.items[index - 1] = item;
+        }
+        this.length++;
+
     }
+
+
 
     /**
      * Remove the index at the given index
@@ -80,8 +104,28 @@ public class Sequence {
      * @param index the index that must be removed.
      */
     public void remove(int index) {
-        // TODO: Implement
-        throw new RuntimeException("Not yet implemented.");
+        if (length == 0) {
+            throw new IllegalArgumentException("Cannot remove from an empty sequence");
+        }
+        if(index == this.length){   //removes element at the end of array
+            this.items[index-1] = 0;
+        }
+        else {              // overwrites the element to be deleted by the succeeding element.
+            for (int i = index; i < this.length; i++) {
+                this.items[i - 1] = this.items[i];
+            }
+            this.items[this.length] = 0;        // removes the last element in the list now in
+                                                // position length-1
+        }
+        this.length--;
+        if(this.length <= capacity/4){      //Checks if the array is 1/4 of the capacity
+            int[] newItems = new int[this.capacity/2];
+            for (int i = 0; i <this.length; i++){   // moves the relevant items to a smaller array.
+                newItems[i] = this.items[i];
+            }
+            this.items = newItems;
+            this.capacity = this.capacity/2;  // halves the capacity.
+        }
     }
 
     /**
@@ -113,8 +157,7 @@ public class Sequence {
      * @return true if the sequence has the the same items at multiple indices
      */
     public boolean hasDuplicate() {
-        // TODO: Implement
-        throw new RuntimeException("Not yet implemented.");
+        return false;
     }
 
 

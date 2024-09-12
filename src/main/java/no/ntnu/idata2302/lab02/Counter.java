@@ -24,6 +24,7 @@ public class Counter {
      * @return a new Counter object
      */
     public static Counter decimal(int digitCount) {
+
         return withAlphabet("0123456789", digitCount);
     }
 
@@ -34,6 +35,7 @@ public class Counter {
      * @return a new counter object
      */
     public static Counter binary(int digitCount) {
+
         return withAlphabet("01", digitCount);
     }
 
@@ -91,7 +93,8 @@ class DigitDisplay {
     private final String alphabet;
     private int index;
 
-    DigitDisplay(String alphabet) {
+    DigitDisplay(String alphabet)
+    {
         this(alphabet, 0);
     }
 
