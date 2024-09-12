@@ -10,8 +10,8 @@ package no.ntnu.idata2302.lab02;
 public class Counter {
 
     public static void main(String args[]) {
-        var counter = Counter.decimal(5);
-        for (int i = 0; i < 50; i++) {
+        var counter = Counter.decimal(2);
+        for (int i = 0; i < 101; i++) {
             System.out.println(counter.value());
             counter.increment();
         }
@@ -79,6 +79,20 @@ public class Counter {
         for (var digit : digits) {
             digit.next();
             if (!digit.isZero()) {
+                return;
+            }
+        }
+    }
+
+    /**
+     * Increment the counter by one
+     */
+    public void increment3() {
+        for (var digit : digits) {
+            digit.next();
+            if (digit.equals('9')) {
+                digit.reset();
+            } else if (!digit.isZero()) {
                 return;
             }
         }
