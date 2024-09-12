@@ -8,10 +8,15 @@
 package no.ntnu.idata2302.lab02;
 
 public class Counter {
+    /**
+     * fields
+     */
+    private final DigitDisplay digits[];
+
 
     public static void main(String args[]) {
         var counter = Counter.decimal(5);
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 999; i++) {
             System.out.println(counter.value());
             counter.increment();
         }
@@ -58,7 +63,7 @@ public class Counter {
         return new Counter(digits);
     }
 
-    private final DigitDisplay digits[];
+
 
     Counter(DigitDisplay[] digits) {
         this.digits = digits;
@@ -68,8 +73,16 @@ public class Counter {
      * Increment the counter by one
      */
     public void increment() {
-        // TODO: Implement
-        throw new RuntimeException("Not yet implemented.");
+        boolean increment = true;
+        int i = 0;
+
+        while(increment){
+            if(digits[i].symbol()!= '9') {
+                increment = false;
+            }
+                digits[i].next();
+            i++;
+        }
     }
 
     /**
