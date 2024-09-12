@@ -73,6 +73,18 @@ public class Counter {
     }
 
     /**
+     * Increment the counter by one
+     */
+    public void increment2() {
+        for (var digit : digits) {
+            digit.next();
+            if (!digit.isZero()) {
+                return;
+            }
+        }
+    }
+
+    /**
      * @return the current value of the counter
      */
     public String value() {
