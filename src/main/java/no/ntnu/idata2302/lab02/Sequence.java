@@ -136,8 +136,14 @@ public class Sequence {
      * @return an
      */
     public int search(int item) {
-        // TODO: Implement
-        throw new RuntimeException("Not yet implemented.");
+        int index = 1;
+        while(index <= this.length){
+            if(this.items[index-1] == item){
+                return index;
+            }
+            index++;
+        }
+        return 0;
     }
 
     /**
@@ -147,8 +153,20 @@ public class Sequence {
      *         second the maximum
      */
     public int[] extrema() {
-        // TODO: Implement
-        throw new RuntimeException("Not yet implemented.");
+        if(this.length == 0) {
+            throw new IllegalStateException("Cannot find extrema in an empty sequence");
+        }
+        int min = this.items[0];
+        int max = this.items[0];
+        for (int i = 1; i < this.length; i++) {
+            if (this.items[i] < min) {
+                min = this.items[i];
+            }
+            if (this.items[i] > max) {
+                max = this.items[i];
+            }
+        }
+        return new int[]{min, max};
     }
 
     /**
@@ -157,7 +175,15 @@ public class Sequence {
      * @return true if the sequence has the the same items at multiple indices
      */
     public boolean hasDuplicate() {
-        return false;
+        boolean duplicate = false;
+        for (int i = 0; i < this.length; i++) {
+            for (int j = i + 1; j < this.length; j++) {
+                if (this.items[i] == this.items[j]) {
+                    duplicate = true;
+                }
+            }
+        }
+        return duplicate;
     }
 
 
